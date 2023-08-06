@@ -8,10 +8,11 @@ Machine learning repo <https://github.com/acciochris/machine-learning>
 
 I'm Chang (Chris) Liu from Lynbrook High School in San Jose, California.
 
-Here are some of my interests (or projects I have made):
+## My projects (every card is clickable!)
 
-::::{card-carousel} 1
-:::{card} Physics
+::::{grid} 1 1 2 2
+:::{grid-item-card} Physics
+:link: https://acciochris.github.io/physics-notes
 $$
 \newcommand{\V}[1]{\mathbf{#1}}
 \newcommand{\pop}[2]{\frac{\partial #1}{\partial #2}}
@@ -24,54 +25,28 @@ $$
 $$
 :::
 
-:::{card} Computer Programming
-```python
-def fib(n: int) -> int:
-    if n <= 2:
-        return 1
-    return fib(n - 1) + fib(n - 2)
-```
-
-```rust
-fn main() {
-    println!("Hello, world!");
-}
-```
-:::
-
-:::{card} Physics Notes
-:link: https://acciochris.github.io/physics-notes
-Click to see my personal physics notes!
-
-Topics include:
-
-- Mechanics: $\mathbf{F} = \dfrac{d\mathbf{p}}{dt}$
-- Electromagnetism: $\mathcal{E} = -\dfrac{d\Phi}{dt}$
-- Thermodynamics: $pV^\gamma = \text{const.}$
-:::
-
-:::{card} Machine Learning
+:::{grid-item-card} Programming & Machine Learning
 :link: https://github.com/acciochris/machine-learning
-
-Click to visit my machine learning Github repo!
-
 ```python
-preprocessor = Pipeline(
-    [
-        ("imputer", imputer),
-        ("encoder", encoder),
-        ("scaler", scaler),
-    ],
-    verbose=True,
-)
+def evaluate(name, y_test, y_pred):
+    print(f"Result for {name}:")
+    print(f"precision: {precision_score(y_test, y_pred)}")
+    print(f"recall: {recall_score(y_test, y_pred)}")
+    print(f"f1: {f1_score(y_test, y_pred)}")
+    print(f"matthews: {matthews_corrcoef(y_test, y_pred)}")
+    plt.close()
+    confusion = ConfusionMatrixDisplay.from_predictions(y_test, y_pred)
+    confusion.plot()
 ```
 :::
 ::::
 
-Contact me:
+## Contact me
 
 - Github: https://github.com/acciochris
 - Kaggle: https://www.kaggle.com/acciochris
+
+## Blog posts
 
 You can find a list of my posts down below or by visiting {ref}`blog-posts`.
 
