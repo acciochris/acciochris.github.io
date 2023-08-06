@@ -10,7 +10,7 @@ I'm Chang (Chris) Liu from Lynbrook High School in San Jose, California.
 
 Here are some of my interests (or projects I have made):
 
-::::{card-carousel} 2
+::::{card-carousel} 1
 :::{card} Physics
 $$
 \newcommand{\V}[1]{\mathbf{#1}}
