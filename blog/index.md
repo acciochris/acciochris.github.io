@@ -2,7 +2,7 @@
 
 ```{toctree}
 :hidden:
-Github <https://acciochris.github.io>
+Github <https://github.com/acciochris>
 My physics notes <https://acciochris.github.io/physics-notes>
 ```
 
