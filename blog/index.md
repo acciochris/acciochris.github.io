@@ -2,14 +2,16 @@
 
 ```{toctree}
 :hidden:
-Github <https://github.com/acciochris>
-My physics notes <https://acciochris.github.io/physics-notes>
+Physics notes <https://acciochris.github.io/physics-notes>
+Machine learning repo <https://github.com/acciochris/machine-learning>
 ```
 
-I'm Chang (Chris) Liu from Lynbrook High School in San Jose, California. ([Github](https://github.com/acciochris))
+I'm Chang (Chris) Liu from Lynbrook High School in San Jose, California.
 
-I'm interested mainly in physics:
+Here are some of my interests (or projects I have made):
 
+::::{card-carousel} 2
+:::{card} Physics
 $$
 \newcommand{\V}[1]{\mathbf{#1}}
 \newcommand{\pop}[2]{\frac{\partial #1}{\partial #2}}
@@ -20,9 +22,9 @@ $$
     \nabla\times\V{B} &= \mu_0\V{J} + \mu_0\epsilon_0\pop{\V{E}}{t}
 \end{align*}
 $$
+:::
 
-and computer programming (Python and Rust):
-
+:::{card} Computer Programming
 ```python
 def fib(n: int) -> int:
     if n <= 2:
@@ -35,8 +37,43 @@ fn main() {
     println!("Hello, world!");
 }
 ```
+:::
 
-You can find my posts down below or by visiting {ref}`blog-posts`.
+:::{card} Physics Notes
+:link: https://acciochris.github.io/physics-notes
+Click to see my personal physics notes!
+
+Topics include:
+
+- Mechanics: $\mathbf{F} = \dfrac{d\mathbf{p}}{dt}$
+- Electromagnetism: $\mathcal{E} = -\dfrac{d\Phi}{dt}$
+- Thermodynamics: $pV^\gamma = \text{const.}$
+:::
+
+:::{card} Machine Learning
+:link: https://github.com/acciochris/machine-learning
+
+Click to visit my machine learning Github repo!
+
+```python
+preprocessor = Pipeline(
+    [
+        ("imputer", imputer),
+        ("encoder", encoder),
+        ("scaler", scaler),
+    ],
+    verbose=True,
+)
+```
+:::
+::::
+
+Contact me:
+
+- Github: https://github.com/acciochris
+- Kaggle: https://www.kaggle.com/acciochris
+
+You can find a list of my posts down below or by visiting {ref}`blog-posts`.
 
 ```{postlist}
 :excerpts:

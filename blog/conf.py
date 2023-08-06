@@ -30,10 +30,13 @@ author = "Chris Liu"
 extensions = [
     "myst_parser",
     "ablog",
+    "sphinx_design",
 ]
 myst_enable_extensions = [
     "dollarmath",
     "deflist",
+    "colon_fence",
+    "linkify",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
