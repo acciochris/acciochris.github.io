@@ -48,7 +48,8 @@ def evaluate(name, y_test, y_pred):
 
 ## Blog posts
 
-You can find a list of my posts down below or by visiting {ref}`blog-posts`.
+You can find a list of my posts down below or by visiting {ref}`blog-posts`. You can also subscribe
+to the atom feed at {ref}`blog-feed`.
 
 ```{postlist}
 :excerpts:
