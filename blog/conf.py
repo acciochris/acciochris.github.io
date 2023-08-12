@@ -91,6 +91,9 @@ html_sidebars = {
         "ablog/archives.html",
     ]
 }
+html_css_files = [
+    "giscus-custom.css",
+]
 
 # Myst configuration
 myst_heading_anchors = 3

@@ -1,0 +1,11 @@
+/* upvote has a bug */
+.gsc-upvote-button {
+    display: none;
+}
+
+/* don't show discus on print */
+@media print {
+    .giscus {
+        display: none;
+    }
+}
