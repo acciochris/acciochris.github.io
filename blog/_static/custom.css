@@ -1,6 +1,6 @@
 /* don't show these on print */
 @media print {
-    div.giscus a.skip-link div.ablog__prev-next {
+    div.giscus, a.skip-link, div.ablog__prev-next {
         display: none;
     }
 }
