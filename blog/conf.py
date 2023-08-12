@@ -92,7 +92,7 @@ html_sidebars = {
     ]
 }
 html_css_files = [
-    "giscus-custom.css",
+    "custom.css",
 ]
 
 # Myst configuration

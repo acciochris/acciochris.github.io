@@ -1,6 +1,0 @@
-/* don't show discus on print */
-@media print {
-    .giscus {
-        display: none;
-    }
-}
