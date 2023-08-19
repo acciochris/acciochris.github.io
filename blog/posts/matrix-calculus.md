@@ -1,4 +1,5 @@
 ---
+date: Aug 19, 2023
 tags: maths, calculus, linear-algebra, neural-network
 category: machine-learning
 ---
@@ -81,7 +82,7 @@ $$
     \V{A}_h &= \text{activation}(\V{Z}_h) \\
     (n \times 5 &= n \times 5) \\
     \V{Z}_{out} &= \V{A}_h\V{W}_{out}^T + \V{b}_{out} \\
-    (n \times 3 &= (n \times 3)@(3 \times 5)^T + [n \times] 3) \\
+    (n \times 3 &= (n \times 5)@(3 \times 5)^T + [n \times] 3) \\
     \V{A}_{out} &= \text{activation}(\V{Z}_{out}) \\
     (n \times 3 &= n \times 3) \\
 \end{align*}
@@ -102,7 +103,7 @@ $$
     \pop{L}{\V{W}_{out}} &= \pop{L}{\V{A}_{out}}\pop{\V{A}_{out}}{\V{Z}_{out}}\pop{\V{Z}_{out}}{\V{W}_{out}} \\
     \pop{L}{\V{b}_{out}} &= \pop{L}{\V{A}_{out}}\pop{\V{A}_{out}}{\V{Z}_{out}}\pop{\V{Z}_{out}}{\V{b}_{out}} \\
     \pop{L}{\V{W}_{h}} &= \pop{L}{\V{A}_{out}}\pop{\V{A}_{out}}{\V{Z}_{out}}\pop{\V{Z}_{out}}{\V{A}_h}\pop{\V{A}_h}{\V{Z}_h}\pop{\V{Z}_h}{\V{W}_h} \\
-    \pop{L}{\V{W}_{h}} &= \pop{L}{\V{A}_{out}}\pop{\V{A}_{out}}{\V{Z}_{out}}\pop{\V{Z}_{out}}{\V{A}_h}\pop{\V{A}_h}{\V{Z}_h}\pop{\V{Z}_h}{\V{b}_h} \\
+    \pop{L}{\V{b}_{h}} &= \pop{L}{\V{A}_{out}}\pop{\V{A}_{out}}{\V{Z}_{out}}\pop{\V{Z}_{out}}{\V{A}_h}\pop{\V{A}_h}{\V{Z}_h}\pop{\V{Z}_h}{\V{b}_h} \\
 \end{align*}
 $$
 
@@ -116,11 +117,48 @@ The solution: we extend the Jacobian matrices into higher orders: tensors.
 ## Tensor Calculus
 
 ```{attention}
-I have not learned tensor calculus, so the following is purely *speculation* based on my maths and physics background.
-
-However, I shall assume that tensor calculus works the same way as matrix calculus does and what we need is only extra dimensions.
+Ahem. There does seem to be some special points about tensor calculus that I have overlooked. After
+experimenting with PyTorch tensors for a while, I figured out that the `jacobian` function isn't
+giving results I expected. So perhaps I will stick to vector and matrix calculus for now. 😅
 ```
 
+However, if we switch back to vectors, most of the above partial derivatives will be easily representable
+by ordinary, scalar derivatives.
+
+Consider the following example:
+
+$$
+\newcommand{\pop}[2]{\dfrac{\partial #1}{\partial #2}}
+\newcommand{\V}[1]{\mathbf{#1}}
+\begin{align*}
+  \pop{L}{\V{b}_{h}} &= \pop{L}{\V{a}_{out}}\pop{\V{a}_{out}}{\V{z}_{out}}\pop{\V{z}_{out}}{\V{a}_h}\pop{\V{a}_h}{\V{z}_h}\pop{\V{z}_h}{\V{b}_h} \\
+  (1 \times 5) &= (1 \times 3)@(3 \times 3)@(3 \times 5)@(5 \times 5)@(5 \times 5)
+\end{align*}
+$$
+
+The six partial derivatives involved can be expressed as follows:
+
+$$
+\newcommand{\pop}[2]{\dfrac{\partial #1}{\partial #2}}
+\newcommand{\V}[1]{\mathbf{#1}}
+\newcommand{\sechsq}[0]{\text{sech}^2\,}
+\begin{align}
+  \pop{L}{\V{b}_h} &= \begin{bmatrix}
+    \pop{L}{b_{h_1}} & \pop{L}{b_{h_2}} & \pop{L}{b_{h_3}} & \pop{L}{b_{h_4}} & \pop{L}{b_{h_5}} \\
+  \end{bmatrix} \\
+  \pop{L}{\V{a}_{out}} &= \begin{bmatrix}
+    \dfrac{2}{3}(a_{out_1}-y_1) & \dfrac{2}{3}(a_{out_2}-y_2) & \dfrac{2}{3}(a_{out_3}-y_3) \\
+  \end{bmatrix} \\
+  \pop{\V{a}_{out}}{\V{z}_{out}} &= \text{diag}(\sechsq z_{out_1},\;\sechsq z_{out_2},\;\sechsq z_{out_3},) \\
+  \pop{\V{z}_{out}}{\V{a}_h} &= \V{W}_{out} \\
+  \pop{\V{a}_h}{\V{z}_h} &= \text{diag}(\sechsq z_{h_1},\;\sechsq z_{h_2},\;\sechsq z_{h_3},\;\sechsq z_{h_4},\;\sechsq z_{h_5}) \\
+  \pop{\V{z}_h}{\V{b}_h} &= \V{I}
+\end{align}
+$$
+
+And it all works out.
+
+<!--
 Let's go over the partial derivatives one by one:
 
 - $\dfrac{\partial L}{\partial\mathbf{A}_{out}}(3 \times n)$:
@@ -183,11 +221,10 @@ Let's go over the partial derivatives one by one:
   ```
 
   which is of shape $2 \times 3 \times 2 \times 3$
-
+-->
 
 [^1]: Parr, T., & Howard, J. (2018). The matrix calculus you need for deep learning. arXiv preprint arXiv:1802.01528.
 
-<!--
 <script src="https://giscus.app/client.js"
         data-repo="acciochris/acciochris.github.io"
         data-repo-id="R_kgDOKDyTVg"
@@ -204,4 +241,3 @@ Let's go over the partial derivatives one by one:
         crossorigin="anonymous"
         async>
 </script>
--->

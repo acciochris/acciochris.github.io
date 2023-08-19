@@ -161,3 +161,4 @@ cython_debug/
 
 template.md
 .DS_Store
+.vscode/
