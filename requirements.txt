@@ -5,7 +5,7 @@ Babel==2.12.1
 beautifulsoup4==4.12.2
 certifi==2023.7.22
 charset-normalizer==3.2.0
-docutils==0.19
+docutils==0.20.1
 feedgen==0.9.0
 idna==3.4
 imagesize==1.4.1
