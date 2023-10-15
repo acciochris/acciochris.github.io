@@ -97,6 +97,7 @@ html_css_files = [
 
 # Myst configuration
 myst_heading_anchors = 3
+myst_linkify_fuzzy_links = False
 
 # ABlog configuration
 blog_path = "posts"
