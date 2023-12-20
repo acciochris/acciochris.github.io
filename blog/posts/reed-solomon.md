@@ -218,3 +218,20 @@ We'll discuss decoding in the next article.
 2. Shankar, Priti. “Decoding Reed-Solomon Codes Using Euclid’s Algorithm.” Resonance, vol. 12, no. 4, Apr. 2007, pp. 37–51. DOI.org (Crossref), https://doi.org/10.1007/s12045-007-0037-y.
 
 Huge thanks to my professor Mr. Thomas Riordan for making the best out of both papers.
+
+<script src="https://giscus.app/client.js"
+        data-repo="acciochris/acciochris.github.io"
+        data-repo-id="R_kgDOKDyTVg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOKDyTVs4CYZPy"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
