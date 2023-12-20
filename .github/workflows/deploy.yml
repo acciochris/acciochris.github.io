@@ -38,7 +38,7 @@ jobs:
       - name: Generate Blog
         run: make -C blog html
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: blog
           path: './blog/_build/html'
