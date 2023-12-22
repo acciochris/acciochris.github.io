@@ -4,7 +4,7 @@ tags: error-correction
 category: CS
 ---
 
-# Reed-Solomon Error Correction --- Decoding
+# Reed-Solomon Error Correction -- Decoding
 
 Reed-Solomon codes are an especially powerful tool for efficient multi-bit error detection and
 correction. In my last [post](./reed-solomon.md), I discussed how to encode messages. In this post,
@@ -29,7 +29,7 @@ $$
 
 ```{important}
 Note that $S_i$ is actually a constant since we are taking the remainder when dividing by $(x + \alpha^i)$,
-and since the order of the remainder must be less than that of the divisor.
+and the order of the remainder must be less than that of the divisor.
 ```
 
 Alternatively, we can rewrite the equation as
@@ -68,7 +68,7 @@ $$
 T(x) = 2x^2 + x + 3
 $$
 
-Let us assume that during transmission, the second symbol (the first check symbol) got entirely flipped: $(01)_2 \rarr (10)_2$.
+Let us assume that during transmission, the second symbol (the first check symbol) got entirely flipped: $(01)_2 \to (10)_2$.
 
 $$
 U(x) = 2x^2 + 2x + 3
@@ -175,7 +175,7 @@ $$
 \sum_{k=0}^\infty S_kx^k = \frac{\Omega(x)}{\Delta(x)}
 $$
 
-As $S_k$ doesn't reallly exist when $k\rarr\infty$, we can rewrite it in modulo form:
+As $S_k$ doesn't reallly exist when $k\to\infty$, we can rewrite it in modulo form:
 
 $$
 \sum_{k=0}^{2t-1} S_kx^k \equiv \frac{\Omega(x)}{\Delta(x)}\pmod{x^{2t}}
@@ -199,18 +199,129 @@ $$
 \end{align*}
 $$
 
+```{warning}
+When using the power rule
+
+$$
+\frac{d}{dx}cx^n = cnx^{n-1}
+$$
+
+where $c$ is a constant, we cannot directly multiple $c$ and $n$ as they are from different fields.
+Instead we add $c$ to itself $n$ times.
+```
+
 This is surprisingly similar to $\Omega(x)$. In fact, we have the following equation:
 
 $$
-X_l\frac{\Omega(X_l^{-1})}{\Delta(X_l^{-1})} = -Y_l = Y_l
+X_l\frac{\Omega(X_l^{-1})}{\Delta'(X_l^{-1})} = -Y_l = Y_l
 $$
 
 And here we go. If we can find $\Omega(x)$ and $\Delta(x)$, then all we have to do is:
 
 1. For every $i \in [0, n-1]\cap\mathbb{Z}$, find $\alpha^i$ and its multiplicative inverse $\alpha^{-i}$ (with the multiplication table)
 2. Plug $\alpha^{-i}$ into the *locator* polynomial $\Delta(x)$. If $i$ is indeed one of $e_j$, call it $e_l$, then $\Delta(\alpha^{-i}) = \Delta(X_l^{-1}) = 0$. (since $(1 - X_lx)$ is one of the factors of $\Delta(x)$)
-3. For every $i$ that passed step 2, evaluate $X_l\frac{\Omega(X_l^{-1})}{\Delta(X_l^{-1})}$ to get the error at that position
- 
+3. For every $i$ that passed step 2, evaluate $X_l\frac{\Omega(X_l^{-1})}{\Delta'(X_l^{-1})}$ to get the error at that position
+
+## Extend Euclidean Algorithm
+
+The (other) hard part is finding the two polynomials, $\Delta(x)$ and $\Omega(x)$.
+To do this, first we need to take a look at the Extended Euclidean Algorithm.
+
+The Bézout identity states that there exists integers $u$ and $v$ such that
+
+$$
+ua + vb = \text{gcd}(a, b)
+$$
+
+With the EEA, we can solve for both the greatest common divisor and the Bézout coefficients with the following Python code:
+
+```python
+def extended_gcd(a: int, b: int) -> dict[str, int]:
+    old_d, d = a, b
+    old_u, u = 1, 0
+    old_v, v = 0, 1
+    
+    while d != 0:
+        q, r = divmod(old_d, d)
+        old_d, d = d, r
+        old_u, u = u, old_u - q * u
+        old_v, v = v, old_v - q * v 
+
+    return {
+        "gcd": old_d,
+        "u": old_u,
+        "v": old_v,
+    }
+```
+
+I won't go into the details here. Here's a [link](https://www.wikiwand.com/en/Extended_Euclidean_algorithm) to the Wikipedia article on this algorithm if you want to dive deeper.
+
+The most important fact about this algorithm is that it also works for polynomials and $GF[2^m]$ fields, or specifically the Fundamental Equation:
+
+
+$$
+\begin{align*}
+    \sum_{k=0}^{2t-1} S_kx^k &\equiv \frac{\Omega(x)}{\Delta(x)}\pmod{x^{2t}} \\
+    \Delta(x)\sum_{k=0}^{2t-1} S_kx^k &\equiv \Omega(x)\pmod{x^{2t}} \\
+    \Delta(x)\sum_{k=0}^{2t-1} S_kx^k - \Omega(x) &= k(x)x^{2t} \\
+    \Delta(x)\sum_{k=0}^{2t-1} S_kx^k + k(x)x^{2t} &= \Omega(x) \\
+\end{align*}
+$$
+
+Peeking at our Bézout identity above, we discover that this equation is in the exact same format.
+If we apply the EEA for $\sum_{k=0}^{2t-1} S_kx^k$ and $x^{2t}$, we will be able to find
+both $\Omega(x)$ (the gcd) and $\Delta(x)$ (one of the Bézout coefficients).
+
+Example:
+
+$$
+\begin{align*}
+    a &= x^2 \\
+    b &= S_0 + S_1x = x + 3 \\
+    a \div b &= (x + 3) \;\cdots\; 2 \\
+    q &= x + 3 \\
+    r &= 2 \\
+\end{align*}
+$$
+
+As `r` is already a constant (equivalent to `r == 0` in the algorithm), we iterate one last time,
+jump out of the while loop and return.
+
+$$
+\begin{align*}
+    \Omega(x) &= 2 \\
+    \Delta(x) &= 0 - 1(x + 3) = x + 3 \\
+\end{align*}
+$$
+
+## Finishing the Example
+
+Once we get $\Omega(x)$ and $\Delta(x)$, we follow the procedure described [earlier](#locating-and-detecting-errors).
+
+
+
+1.  $$
+    \begin{align*}
+        \alpha^0 &= 1 \\
+        \alpha^1 &= 2 \\
+        \alpha^2 &= 3 \\
+        \alpha^{-1} &= 2^{-1} = 3 \\
+        \alpha^{-2} &= 3^{-1} = 2 \\
+    \end{align*}
+    $$
+2.  $$
+    \begin{align*}
+        \Delta(\alpha^0) &= 1 + 3 = 2 \\
+        \Delta(\alpha^{-1}) &= 3 + 3 = 0\;\mathcal{(ERROR!)} \\
+        \Delta(\alpha^{-2}) &= 2 + 3 = 1 \\
+    \end{align*}
+    $$
+3.  $$
+    Y_l = \alpha^1\frac{\Omega(\alpha^{-1})}{\Delta'(\alpha^{-1})} = 2\cdot\frac{2}{1} = 3
+    $$
+
+    This is the correct answer as the double bit error is represented by $3 = (11)_2$ at the second position.
+
 ## Citations and Credits
 
 1. Clarke, C. K. P. "R&d white paper." Reed-Solomon error correction," WHP 31 (2002).
