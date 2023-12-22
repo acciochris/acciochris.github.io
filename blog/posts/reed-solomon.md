@@ -4,7 +4,7 @@ tags: error-correction
 category: CS
 ---
 
-# Reed-Solomon Error Correction --- Encoding
+# Reed-Solomon Error Correction -- Encoding
 
 Reed-Solomon codes are an especially powerful tool for efficient multi-bit error detection and
 correction. The following is my understanding of the algorithm after reading my professor's
@@ -67,7 +67,7 @@ For example, in $GF[2^2]$, we have the following symbols
 |    $0$     |    $0$     |   00   |    0    |
 | $\alpha^0$ |    $1$     |   01   |    1    |
 | $\alpha^1$ |    $x$     |   10   |    2    |
-| $\alpha^2$ |   $x^2$    |   11   |    3    |
+| $\alpha^2$ |  $x + 1$   |   11   |    3    |
 
 with the generator polynomial being $p(x) = x^2 + x + 1$.
 
