@@ -1,6 +1,6 @@
 ---
 date: 16 Sep, 2023
-tags: MIPS, assembly, calling-convention
+tags: mips, assembly, calling-convention
 category: CS
 ---
 
