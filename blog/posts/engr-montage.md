@@ -7,7 +7,7 @@ category: CS
 # Engineering Montage
 
 Over the past few weeks, I have been working on a technical project that requires a ton of (computer)
-engineering. I think it's time to talk about what what I learned from it.
+engineering. I think it's time to talk about what I learned from it.
 
 ::::{note}
 ~~Fun~~ Not so fun fact:
@@ -18,7 +18,7 @@ attending [College Essay Guy](https://www.collegeessayguy.com/)'s course on how 
 statement and it mentioned "montage" as a possible structure.
 
 :::{important}
-I am not in any way affliated with College Essay Guy.
+I am not in any way affiliated with College Essay Guy.
 :::
 
 Nevertheless, I believe that the word "montage" captures the essence of this post pretty well, as it
