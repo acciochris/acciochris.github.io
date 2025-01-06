@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = "Chris Liu's Blog"
-copyright = "2024, Chris Liu"
+copyright = "2025, Chris Liu"
 author = "Chris Liu"
 
 
