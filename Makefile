@@ -1,3 +1,5 @@
+SHELL := /bin/bash
+
 .PHONY: html
 html:
 	source .venv/bin/activate && cd blog && $(MAKE) html
