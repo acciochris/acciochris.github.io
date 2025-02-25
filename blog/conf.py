@@ -38,6 +38,7 @@ myst_enable_extensions = [
     "colon_fence",
     "linkify",
     "strikethrough",
+    "attrs_inline",
 ]
 suppress_warnings = ["myst.strikethrough"]
 
