@@ -15,7 +15,7 @@ Here's my reply:
 ![solution](../images/intrgral-sol.jpeg)
 
 $$
-\int\tan x\,dx = \frac{\sqrt{2}}{4}\ln\left(\frac{\tan x - \sqrt{2\tan x} + 1}{\tan x + \sqrt{2\tan x} + 1}\right) + \frac{\sqrt{2}}{2}\left[\arctan\left(\sqrt{2\tan x} + 1\right) + \arctan\left(\sqrt{2\tan x} - 1\right)\right] + C
+\int\sqrt{\tan x}\,dx = \frac{\sqrt{2}}{4}\ln\left(\frac{\tan x - \sqrt{2\tan x} + 1}{\tan x + \sqrt{2\tan x} + 1}\right) + \frac{\sqrt{2}}{2}\left[\arctan\left(\sqrt{2\tan x} + 1\right) + \arctan\left(\sqrt{2\tan x} - 1\right)\right] + C
 $$
 
 <script src="https://giscus.app/client.js"
