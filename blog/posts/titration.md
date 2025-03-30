@@ -1,4 +1,5 @@
 ---
+date: Mar 30, 2025
 tags: chemistry, calculus
 category: misc
 ---
