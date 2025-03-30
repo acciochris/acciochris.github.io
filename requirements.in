@@ -3,3 +3,4 @@ myst-parser[linkify]
 ablog
 sphinx-book-theme
 sphinx-design
+sphinx-autobuild
