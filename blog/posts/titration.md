@@ -98,7 +98,7 @@ $$ (ph)
 
 This is indeed the typical strong-acid titration graph:
 
-<iframe src="https://www.geogebra.org/calculator/ym5vesqa?embed" width="100%" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0" loading="lazy"></iframe>
+<iframe src="https://www.geogebra.org/calculator/ym5vesqa?embed" width="100%" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
 
 Notice that because:
 
@@ -188,7 +188,7 @@ it is due to numerical errors when the concentrations of ions are very small, le
 overflow/underflow. I will try to plot it using Python in an upcoming post, if possible.
 ```
 
-<iframe src="https://www.geogebra.org/calculator/q37vbfam?embed" width="100%" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0" loading="lazy"></iframe>
+<iframe src="https://www.geogebra.org/calculator/q37vbfam?embed" width="100%" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
 
 A couple things to notice before we take the second derivative:
 
@@ -297,3 +297,12 @@ Each of these questions (and many others) invites a studious, scientific, and fa
         async>
 </script>
 
+<script>
+    setTimeout(() => {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
+    }, 4000);
+</script>
