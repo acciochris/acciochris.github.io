@@ -1,4 +1,5 @@
 ---
+date: May 24, 2025
 tags: statistics, python
 category: math
 ---
@@ -27,7 +28,7 @@ $$
 
 If the P-value is less than the significance level $\alpha$, we reject the null hypothesis. At the
 fundamental level, the null hypothesis always states that multiple distributions of categories
-matches one another (either between a sample and a known population, between two samples, or within
+match one another (either between a sample and a known population, between two samples, or within
 one sample between different values of one variable).
 
 However, because multiple categories are involved, it is not obvious how to construct an equivalent
@@ -226,7 +227,7 @@ computer-based simulation to experimentally determine the overall confidence lev
 ### Simulation results
 
 A total of 20 simulations was performed for each combination of $n$ and $p_i$. The following table
-displays the mean and standard deviation of the 20 trials for $n = 100$ and
+displays the mean and standard deviation of the 20 simulations for $n = 100$ and
 $p_i = \text{[0.15, 0.25, 0.3, 0.3]}$.
 
 | $n$ | $p_i$                  | $k$         | 0                    | 1                    | 2                    | 3                    | 4                    |
@@ -342,7 +343,8 @@ performed for each value of $n$ across different values of $p_i$. The null hypot
 in these tests.
 
 ```{tip}
-Please refer to [Appendix B](#appendix-b-full-anova-test-results) for the full ANOVA test results.
+Please refer to [Appendix B](#appendix-b-full-one-way-anova-test-results) for the full ANOVA test
+results.
 ```
 
 ```{caution}
@@ -543,7 +545,7 @@ confidence level that encapsulates the random variability across all categories.
 | 2000 | [$\frac{1}{3}$, $\frac{1}{3}$, $\frac{1}{3}$] | 0.0001342 | 0.002582  | 0.004185  | 0.004475 |          |          |
 :::
 
-## Appendix B: Full ANOVA test results
+## Appendix B: Full one-way ANOVA test results
 
 :::{table} Table 3: F-statistics across different values of $n$ at each $p_i$
 | $p_i$                                         | $k = 0$ | 1     | 2     | 3     | 4     | 5     |
