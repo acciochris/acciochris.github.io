@@ -93,7 +93,11 @@ distribution:
 | ----------- | --- | --- | --- | --- |
 | Probability | 0.1 | 0.2 | 0.3 | 0.4 |
 
+:::{figure-md}
 ![Multinomial Sampling Distribution](../images/chi-squared-interval/multinomial.png)
+
+Figure 1: Sampling distribution of a multinomial distribution with four categories
+:::
 
 Notice how each of the four categories follow a binomial (approximately normal) sampling
 distribution.
@@ -291,7 +295,11 @@ parameters.
   sample.
 - Population nearly normal: Histograms of sample distributions are nearly normal.
 
+  :::{figure-md}
   ![Histogram of distribution within sample](../images/chi-squared-interval/pop-normal.png)
+
+  Figure 2: Histograms of sample distributions across multiple sample sizes
+  :::
 
 - Equal Variance: Sample standard deviations across different values of $n$ are approximately equal.
 
@@ -316,7 +324,11 @@ $$
 \end{align*}
 $$
 
+:::{figure-md}
 ![F distribution](../images/chi-squared-interval/f-dist.png)
+
+Figure 3: $\chi^2$ distribution with $\mathrm{df1} = 4$ and $\mathrm{df2} = 95$
+:::
 
 #### Conclusion
 
@@ -399,6 +411,7 @@ confidence level that encapsulates the random variability across all categories.
 
 ## Appendix A: Full simulation results
 
+:::{table} Table 1: Means of 20 simulation results at selected $n$ and $p_i$
 | $n$  | $p_i$                                         | $k = 0$ | 1       | 2       | 3       | 4      | 5      |
 | ---- | --------------------------------------------- | ------- | ------- | ------- | ------- | ------ | ------ |
 | 50   | [0.2, 0.2, 0.2, 0.2, 0.2]                     | 1e-05   | 7e-05   | 0.0038  | 0.03902 | 0.2204 | 0.7367 |
@@ -462,7 +475,9 @@ confidence level that encapsulates the random variability across all categories.
 | 2000 | [0.25, 0.35, 0.4]                             | 6e-05   | 0.02817 | 0.09321 | 0.8786  |        |        |
 | 2000 | [0.3, 0.7]                                    | 0.05047 | 0       | 0.9495  |         |        |        |
 | 2000 | [$\frac{1}{3}$, $\frac{1}{3}$, $\frac{1}{3}$] | 7e-05   | 0.0278  | 0.09806 | 0.8741  |        |        |
+:::
 
+:::{table} Table 2: Standard deviations of 20 simulation results at selected $n$ and $p_i$
 | $n$  | $p_i$                                         | $k = 0$   | 1         | 2         | 3        | 4        | 5        |
 | ---- | --------------------------------------------- | --------- | --------- | --------- | -------- | -------- | -------- |
 | 50   | [0.2, 0.2, 0.2, 0.2, 0.2]                     | 4.472e-05 | 0.0001174 | 0.001114  | 0.001677 | 0.004869 | 0.004965 |
@@ -526,9 +541,11 @@ confidence level that encapsulates the random variability across all categories.
 | 2000 | [0.25, 0.35, 0.4]                             | 0.0001142 | 0.002132  | 0.004306  | 0.005106 |          |          |
 | 2000 | [0.3, 0.7]                                    | 0.003421  | 0         | 0.003421  |          |          |          |
 | 2000 | [$\frac{1}{3}$, $\frac{1}{3}$, $\frac{1}{3}$] | 0.0001342 | 0.002582  | 0.004185  | 0.004475 |          |          |
+:::
 
 ## Appendix B: Full ANOVA test results
 
+:::{table} Table 3: F-statistics across different values of $n$ at each $p_i$
 | $p_i$                                         | $k = 0$ | 1     | 2     | 3     | 4     | 5     |
 | --------------------------------------------- | ------- | ----- | ----- | ----- | ----- | ----- |
 | [0.1, 0.1, 0.1, 0.1, 0.6]                     | 0.75    | 4.555 | 65.34 | 54.79 | 565.5 | 681.8 |
@@ -542,7 +559,9 @@ confidence level that encapsulates the random variability across all categories.
 | [0.25, 0.35, 0.4]                             | 17.12   | 16.67 | 29.45 | 41.66 |       |       |
 | [0.3, 0.7]                                    | 125.8   |       | 125.8 |       |       |       |
 | [$\frac{1}{3}$, $\frac{1}{3}$, $\frac{1}{3}$] | 4.095   | 23.12 | 18.44 | 32.74 |       |       |
+:::
 
+:::{table} Table 4: P-values across different values of $n$ at each $p_i$
 | $p_i$                                         | $k = 0$   | 1         | 2         | 3         | 4         | 5         |
 | --------------------------------------------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | [0.1, 0.1, 0.1, 0.1, 0.6]                     | 0.5604    | 0.002077  | 1.909e-26 | 7.245e-24 | 2.646e-65 | 5.113e-69 |
@@ -556,7 +575,9 @@ confidence level that encapsulates the random variability across all categories.
 | [0.25, 0.35, 0.4]                             | 1.323e-12 | 2.472e-12 | 4.296e-19 | 3.313e-24 |           |           |
 | [0.3, 0.7]                                    | 1.05e-44  |           | 1.05e-44  |           |           |           |
 | [$\frac{1}{3}$, $\frac{1}{3}$, $\frac{1}{3}$] | 0.001863  | 5.715e-16 | 2.193e-13 | 1.404e-20 |           |           |
+:::
 
+:::{table} Table 5: F-statistics across different $p_i$ at each $n$ and $m$
 | $n$  | $m$ | $k = 0$   | 1       | 2     | 3     | 4     | 5     |
 | ---- | --- | --------- | ------- | ----- | ----- | ----- | ----- |
 | 50   | 3   | 26.59     | 109.2   | 64.1  | 132.8 |       |       |
@@ -575,7 +596,9 @@ confidence level that encapsulates the random variability across all categories.
 | 2000 | 3   | 12.45     | 18.85   | 15.5  | 3.122 |       |       |
 | 2000 | 4   | 6.131     | 3.959   | 2.55  | 4.841 | 5.858 |       |
 | 2000 | 5   | 0.5       | 0.05933 | 22.49 | 1.113 | 1.565 | 3.247 |
+:::
 
+:::{table} Table 6: P-values across different $p_i$ at each $n$ and $m$
 | $n$  | $m$ | $k = 0$   | 1         | 2         | 3         | 4         | 5         |
 | ---- | --- | --------- | --------- | --------- | --------- | --------- | --------- |
 | 50   | 3   | 6.959e-09 | 3.217e-20 | 2.601e-15 | 3.534e-22 |           |           |
@@ -594,6 +617,7 @@ confidence level that encapsulates the random variability across all categories.
 | 2000 | 3   | 1.043e-06 | 3.076e-09 | 5.863e-08 | 0.03081   |           |           |
 | 2000 | 4   | 0.003874  | 0.02455   | 0.08697   | 0.01143   | 0.004855  |           |
 | 2000 | 5   | 0.6092    | 0.9425    | 6.314e-08 | 0.3356    | 0.218     | 0.04619   |
+:::
 
 ---
 
