@@ -326,7 +326,8 @@ corresponds to a one-proportion z-interval at 95% confidence for each category o
 distribution with $p_i = [0.15, 0.25, 0.3, 0.3]$ is different from the others.
 
 Similar tests are performed for other values of $p_i$. A second set of one-way ANOVA tests are
-performed for each value of $n$ across different values of $p_i$.
+performed for each value of $n$ across different values of $p_i$. The null hypotheses are _rejected_
+in these tests.
 
 ```{tip}
 Please refer to [Appendix B](#appendix-b-full-anova-test-results) for the full ANOVA test results.
@@ -338,6 +339,63 @@ confidence intervals that capture their corresponding population proportions. Ho
 small, assumptions for the one-way ANOVA test may be violated. Caution is required when interpreting
 these results.
 ```
+
+## Converting between individual and overall confidence levels
+
+Based on the previous section, we can conclude that the overall confidence level depends both on the
+sample size $n$ and the population proportions $p_i$. So how can we make use of this information to
+make a general statement
+[about all categories](#overall-confidence-level-across-multiple-categories)?
+
+If we are given a random sample, we already know the sample size. Obviously, we don't know the
+population proportions, but we can reuse the same technique when we first studied confidence
+intervals: just pretend that the sample proportions _are_ the population proportions! That's how we
+came up with $SE(\hat{p})$, right?
+
+In other words, if we're given a sample of size $n$ and sample proportions $\hat{p}_i$, we can
+temporarily assume that $p_i = \hat{p}_i$ and rerun the simulation described in the previous
+section. The resulting proportion corresponding to $k = m$ (reminder: $m$ is the total number of
+categories) is therefore the overall confidence level across all categories.
+
+Note that this procedure requires that we predetermine a confidence level for any individual
+category (i.e. the confidence level used in a one-proportion z-interval). What if we want to specify
+the overall confidence level instead?
+
+In other words, if we want to make the following statement:
+
+> I am 90% confident that each of the population proportions across all four categories lies within
+> their respective confidence intervals.
+
+What confidence level should these "respective confidence intervals" (one-proportion z-intervals)
+use?
+
+This problem can be solved by using a binary search for the individual confidence level. For
+example, if the target overall confidence level is 90%, let's first assume that the corresponding
+individual confidence level is, say, 96%. Then we run the simulation and see if the resulting
+overall confidence level is less than or greater than the target value of 90%. After that, we can
+adjust our guess (96%) accordingly.
+
+By repeating the procedure above, we are able to reach a close estimate of the true individual
+confidence level.
+
+A Python implementation of this confidence-level conversion process can be found
+[here](https://github.com/acciochris/stats-project-2025/blob/main/chi_squared_conf_int_demo.ipynb).
+
+<a target="_blank" href="https://colab.research.google.com/github/acciochris/stats-project-2025/blob/main/chi_squared_conf_int_demo.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
+## Conclusion
+
+In this project, we investigated the multinomial distribution behind a $\chi^2$ goodness-of-fit
+test. We executed a simulation to adapt the one-proportion z-interval to $\chi^2$ GOF tests. We
+performed one-way ANOVA tests to determine whether the sample size and/or the population proportions
+had an impact on overall confidence level. Finally, we established a procedure of converting between
+individual and overall confidence levels.
+
+This project allows us to confidently (hahaha) create confidence intervals for each of the
+categories of a multinomial distribution, and more importantly, to compute and interpret a
+confidence level that encapsulates the random variability across all categories.
 
 ## Appendix A: Full simulation results
 
