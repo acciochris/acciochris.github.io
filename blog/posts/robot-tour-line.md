@@ -52,14 +52,14 @@ The following is a theoretical analysis of my original algorithm.
 5. Then a differential equation can be set up and solved with separation of variables:
    
    $$
-   \begin{align*}
+   
        \dot{\theta} &= a + b(p\theta + q\dot{\theta}) \\
        (1-bq)\frac{d\theta}{dt} &= a + bp\theta \\
        \int_0^\theta\frac{d\theta}{a + bp\theta} &= \int_0^t\frac{1}{1-bq}dt \\
        \frac{1}{bp}\ln\left|\frac{a + bp\theta}{a}\right| &= \frac{1}{1-bq}t \\
        1 + \frac{bq}{a}\theta &= \exp\left(\frac{bp}{1-bq}t\right) \\
        \theta &= \frac{a}{bq}\left(\exp\left(\frac{bp}{1-bq}t\right)-1\right) \\
-   \end{align*}
+   
    $$
 
 This implies that my original algorithm should never be able to achieve a perfect straight line.

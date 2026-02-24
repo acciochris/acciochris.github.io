@@ -76,7 +76,7 @@ Assuming the input data are stored in matrix $\mathbf{X}$ (shape $n \times 3$, $
 $$
 \newcommand{\pop}[2]{\dfrac{\partial #1}{\partial #2}}
 \newcommand{\V}[1]{\mathbf{#1}}
-\begin{align*}
+
     \V{Z}_{h} &= \V{X}\V{W}_h^T + \V{b}_h \\
     (n \times 5 &= (n \times 3)@(5 \times 3)^T + [n\times]5) \\
     \V{A}_h &= \text{activation}(\V{Z}_h) \\
@@ -85,7 +85,7 @@ $$
     (n \times 3 &= (n \times 5)@(3 \times 5)^T + [n \times] 3) \\
     \V{A}_{out} &= \text{activation}(\V{Z}_{out}) \\
     (n \times 3 &= n \times 3) \\
-\end{align*}
+
 $$
 
 Assuming the lost function is MSE:
@@ -99,12 +99,12 @@ and the activation function is $\tanh x$, we can work out the derivatives for th
 $$
 \newcommand{\pop}[2]{\dfrac{\partial #1}{\partial #2}}
 \newcommand{\V}[1]{\mathbf{#1}}
-\begin{align*}
+
     \pop{L}{\V{W}_{out}} &= \pop{L}{\V{A}_{out}}\pop{\V{A}_{out}}{\V{Z}_{out}}\pop{\V{Z}_{out}}{\V{W}_{out}} \\
     \pop{L}{\V{b}_{out}} &= \pop{L}{\V{A}_{out}}\pop{\V{A}_{out}}{\V{Z}_{out}}\pop{\V{Z}_{out}}{\V{b}_{out}} \\
     \pop{L}{\V{W}_{h}} &= \pop{L}{\V{A}_{out}}\pop{\V{A}_{out}}{\V{Z}_{out}}\pop{\V{Z}_{out}}{\V{A}_h}\pop{\V{A}_h}{\V{Z}_h}\pop{\V{Z}_h}{\V{W}_h} \\
     \pop{L}{\V{b}_{h}} &= \pop{L}{\V{A}_{out}}\pop{\V{A}_{out}}{\V{Z}_{out}}\pop{\V{Z}_{out}}{\V{A}_h}\pop{\V{A}_h}{\V{Z}_h}\pop{\V{Z}_h}{\V{b}_h} \\
-\end{align*}
+
 $$
 
 (which is a *ton* of partial derivatives)
@@ -130,10 +130,10 @@ Consider the following example:
 $$
 \newcommand{\pop}[2]{\dfrac{\partial #1}{\partial #2}}
 \newcommand{\V}[1]{\mathbf{#1}}
-\begin{align*}
+
   \pop{L}{\V{b}_{h}} &= \pop{L}{\V{a}_{out}}\pop{\V{a}_{out}}{\V{z}_{out}}\pop{\V{z}_{out}}{\V{a}_h}\pop{\V{a}_h}{\V{z}_h}\pop{\V{z}_h}{\V{b}_h} \\
   (1 \times 5) &= (1 \times 3)@(3 \times 3)@(3 \times 5)@(5 \times 5)@(5 \times 5)
-\end{align*}
+
 $$
 
 The six partial derivatives involved can be expressed as follows:

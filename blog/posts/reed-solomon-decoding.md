@@ -43,11 +43,11 @@ where $V_i(x)$ are the quotients.
 If we rearrange and plug in $\alpha_i$, we will get
 
 $$
-\begin{align*}
+
     S_i(x) &= U(x) + V_i(x)(x + \alpha^i) \\
     S_i(\alpha^i) &= U(\alpha^i) + V_i(\alpha^i)(\alpha^i + \alpha^i) \\
                   &= U(\alpha^i)
-\end{align*}
+
 $$
 
 As $S_i(x)$ is a constant function, $S_i(x) = S_i(\alpha^i)$. Thus
@@ -77,19 +77,19 @@ $$
 Then
 
 $$
-\begin{align*}
+
     S_0 &= U(x) \bmod (x + 1) = 3 \\
     S_1 &= U(x) \bmod (x + 2) = 1 \\
-\end{align*}
+
 $$
 
 Alternatively,
 
 $$
-\begin{align*}
+
     S_0 &= U(1) = 3 \\
     S_1 &= U(2) = 1 \\
-\end{align*}
+
 $$
 
 ## The Fundamental Equation
@@ -98,11 +98,11 @@ You may have wondered why we would like to calculate the syndromes in the first 
 the stepping stones to locating and correcting errors.
 
 $$
-\begin{align*}
+
     S_i = U(\alpha^i) &= T(\alpha^i) + E(\alpha^i) \\
                       &= Q(\alpha^i)g(\alpha^i) + E(\alpha^i) \\
                       &= E(\alpha^i) \\
-\end{align*}
+
 $$
 
 ```{note}
@@ -124,10 +124,10 @@ $$
 Therefore
 
 $$
-\begin{align*}
+
     S_i = E(\alpha^i) &= \sum_{j=1}^t Y_j \alpha^{ie_j} \\
                       &= \sum_{j=1}^t Y_j X_j^i \\
-\end{align*}
+
 $$
 
 where $X_j = \alpha^{e_j}$.
@@ -149,12 +149,12 @@ $$
 After a series of manipulations:
 
 $$
-\begin{align*}
+
     Y_j\sum_{k=0}^\infty X_j^k x^k &= \frac{Y_j}{1 - X_jx} \\
     \sum_{j=1}^t \left(Y_j\sum_{k=0}^\infty X_j^k x^k\right) &= \sum_{j=1}^t\frac{Y_j}{1 - X_jx} \\
     \sum_{k=0}^\infty \left(x^k\sum_{j=1}^t Y_jX_j^k\right) &= \sum_{j=1}^t\frac{Y_j}{1 - X_jx} \\
     \sum_{k=0}^\infty S_kx^k &= \frac{\sum_{j=1}^t \left(Y_j\prod_{k=1,\,k \ne j}^t (1 - X_kx)\right)}{\prod_{j=1}^t(1 - X_jx)}
-\end{align*}
+
 $$
 
 We can define the *locator polynomial* $\Delta(x)$ as
@@ -193,10 +193,10 @@ However, this is just about to change.
 The following is the derivative of the locator polynomial $\Delta(x)$:
 
 $$
-\begin{align*}
+
     \Delta'(x) &= \sum_{j=1}^t \left(\frac{d}{dx}(1 - X_jx)\cdot\prod_{\substack{k=1 \\ k \ne j}}^t (1 - X_kx)\right) \\
                &= \sum_{j=1}^t \left(-X_j\prod_{\substack{k=1 \\ k \ne j}}^t (1 - X_kx)\right)
-\end{align*}
+
 $$
 
 ```{warning}
@@ -260,12 +260,12 @@ The most important fact about this algorithm is that it also works for polynomia
 
 
 $$
-\begin{align*}
+
     \sum_{k=0}^{2t-1} S_kx^k &\equiv \frac{\Omega(x)}{\Delta(x)}\pmod{x^{2t}} \\
     \Delta(x)\sum_{k=0}^{2t-1} S_kx^k &\equiv \Omega(x)\pmod{x^{2t}} \\
     \Delta(x)\sum_{k=0}^{2t-1} S_kx^k - \Omega(x) &= k(x)x^{2t} \\
     \Delta(x)\sum_{k=0}^{2t-1} S_kx^k + k(x)x^{2t} &= \Omega(x) \\
-\end{align*}
+
 $$
 
 Peeking at our Bézout identity above, we discover that this equation is in the exact same format.
@@ -275,23 +275,23 @@ both $\Omega(x)$ (the gcd) and $\Delta(x)$ (one of the Bézout coefficients).
 Example:
 
 $$
-\begin{align*}
+
     a &= x^2 \\
     b &= S_0 + S_1x = x + 3 \\
     a \div b &= (x + 3) \;\cdots\; 2 \\
     q &= x + 3 \\
     r &= 2 \\
-\end{align*}
+
 $$
 
 As `r` is already a constant (equivalent to `r == 0` in the algorithm), we iterate one last time,
 jump out of the while loop and return.
 
 $$
-\begin{align*}
+
     \Omega(x) &= 2 \\
     \Delta(x) &= 0 - 1(x + 3) = x + 3 \\
-\end{align*}
+
 $$
 
 ## Finishing the Example
@@ -299,20 +299,20 @@ $$
 Once we get $\Omega(x)$ and $\Delta(x)$, we follow the procedure described [earlier](#locating-and-detecting-errors).
 
 1.  $$
-    \begin{align*}
+    
         \alpha^0 &= 1 \\
         \alpha^1 &= 2 \\
         \alpha^2 &= 3 \\
         \alpha^{-1} &= 2^{-1} = 3 \\
         \alpha^{-2} &= 3^{-1} = 2 \\
-    \end{align*}
+    
     $$
 2.  $$
-    \begin{align*}
+    
         \Delta(\alpha^0) &= 1 + 3 = 2 \\
         \Delta(\alpha^{-1}) &= 3 + 3 = 0\;\mathcal{(ERROR!)} \\
         \Delta(\alpha^{-2}) &= 2 + 3 = 1 \\
-    \end{align*}
+    
     $$
 3.  $$
     Y_l = \alpha^1\frac{\Omega(\alpha^{-1})}{\Delta'(\alpha^{-1})} = 2\cdot\frac{2}{1} = 3

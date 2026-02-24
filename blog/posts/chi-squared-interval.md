@@ -63,10 +63,10 @@ Let us first consider a Bernoulli trial with probability of success $p$. The _bi
 gives the expected value and standard deviation as follows:
 
 $$
-\begin{align*}
+
     E(X) &= np \\
     SD(X) &= \sqrt{np(1-p)} \\
-\end{align*}
+
 $$
 
 where $X$ is defined as number of successes in $n$ trials.
@@ -76,10 +76,10 @@ typical $\chi^2$ test table) represents one possible outcome. Let $X_i$ be the n
 result in the $i$th outcome over $n$ trials. Then $X_i$ follow the _multinomial_ distribution:
 
 $$
-\begin{align*}
+
     E(X_i) &= np_i \\
     SD(X_i) &= \sqrt{np_i(1-p_i)} \\
-\end{align*}
+
 $$
 
 Notice how the two equations are exactly the same as the binomial distribution. Intuitively, this
@@ -319,10 +319,10 @@ Ok to perform a one-way ANOVA test at $\mathrm{df1} = 4$, $\mathrm{df2} = 95$, a
 The `scipy` stats package gives
 
 $$
-\begin{align*}
+
   F &= 65.845 \\
   P &= 1.5 \times 10^{-26} \ll \alpha \\
-\end{align*}
+
 $$
 
 :::{figure-md}

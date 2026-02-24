@@ -74,11 +74,11 @@ with the generator polynomial being $p(x) = x^2 + x + 1$.
 Then
 
 $$
-\begin{align*}
+
    2 \times 3 &= x \cdot x^2 \bmod (x^2 + x + 1) \\
               &= x\cdot(x + 1) \bmod (x^2 + x + 1) \\
               &= 1
-\end{align*}
+
 $$
 
 The complete multiplication table is as follows:

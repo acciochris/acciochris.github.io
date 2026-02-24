@@ -16,12 +16,10 @@ I'm Chang (Chris) Liu from Lynbrook High School in San Jose, California.
 $$
 \newcommand{\V}[1]{\mathbf{#1}}
 \newcommand{\pop}[2]{\frac{\partial #1}{\partial #2}}
-\begin{align*}
     \nabla\cdot\V{E} &= \frac{\rho}{\epsilon_0} \\
     \nabla\times\V{E} &= -\pop{\V{B}}{t} \\
     \nabla\cdot\V{B} &= 0 \\
     \nabla\times\V{B} &= \mu_0\V{J} + \mu_0\epsilon_0\pop{\V{E}}{t}
-\end{align*}
 $$
 :::
 

@@ -68,10 +68,10 @@ Assume that the player pays $10$ dollars for the game.
 |    $-10$    | $\frac{27}{169}$ |
 
 $$
-\begin{align*}
+
     \mu_x &= \sum_i x_i p_i = -0.178 \\
     \sigma_x &= \sqrt{\sum_i (x_i - \mu_x)^2 p_i} = 11.940 \\
-\end{align*}
+
 $$
 
 ## The Code
