@@ -6,7 +6,7 @@ Physics notes <https://acciochris.github.io/physics-notes>
 Machine learning repo <https://github.com/acciochris/machine-learning>
 ```
 
-I'm Chang (Chris) Liu from Lynbrook High School in San Jose, California.
+I'm Chris Liu, a freshman undergrad at MIT.
 
 ## My projects (every card is clickable!)
 
