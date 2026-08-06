@@ -68,7 +68,7 @@ packaging==26.3
     #   ablog
     #   sphinx
 pydata-sphinx-theme==0.20.0
-    # via sphinx-book-theme
+    # via -r requirements.in
 pygments==2.20.0
     # via
     #   accessible-pygments
@@ -99,11 +99,8 @@ sphinx==9.1.0
     #   myst-parser
     #   pydata-sphinx-theme
     #   sphinx-autobuild
-    #   sphinx-book-theme
     #   sphinx-design
 sphinx-autobuild==2025.8.25
-    # via -r requirements.in
-sphinx-book-theme==1.4.0
     # via -r requirements.in
 sphinx-design==0.7.0
     # via -r requirements.in

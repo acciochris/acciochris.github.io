@@ -56,7 +56,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "sphinx_book_theme"
+html_theme = "pydata_sphinx_theme"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -64,29 +64,25 @@ html_theme = "sphinx_book_theme"
 html_static_path = ["_static"]
 
 html_title = project
-html_logo = "_static/avatar.png"
 html_favicon = "_static/avatar.png"
 html_theme_options = {
-    "repository_url": "https://github.com/acciochris/acciochris.github.io",
-    "use_repository_button": True,
     "logo": {
         "text": project,
-    }
-    #    "footer_icons": [
-    #        {
-    #            "name": "GitHub",
-    #            "url": "https://github.com/acciochris",
-    #            "html": "",
-    #            "class": "fa-brands fa-solid fa-github fa-2x",
-    #        },
-    #    ],
+        "image_light": "_static/avatar.png",
+        "image_dark": "_static/avatar.png",
+    },
+   "icon_links": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/acciochris",
+            "icon": "fa-brands fa-github",
+            "type": "fontawesome",
+        }
+   ]
 }
 html_copy_source = False
 html_sidebars = {
     "**": [
-        "navbar-logo.html",
-        "search-field.html",
-        "sbt-sidebar-nav.html",
         "ablog/postcard.html",
         "ablog/recentposts.html",
         "ablog/tagcloud.html",
